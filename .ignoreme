@@ -1,0 +1,13 @@
+# Example .ignoreme file
+node_modules
+*.log
+src
+.gitignore
+.ignoreme
+release
+package.json
+package-lock.json
+tsconfig.json
+webpack*
+.DS_Store
+release*

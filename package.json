@@ -1,0 +1,30 @@
+{
+  "name": "umk-plus",
+  "version": "0.0.1",
+  "private": false,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "dev": "webpack --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@babel/preset-react": "^7.26.3",
+    "ts-loader": "^9.5.2",
+    "typescript": "^5.7.3",
+    "webpack": "^5.97.1",
+    "webpack-cli": "^6.0.1"
+  },
+  "dependencies": {
+    "@types/chrome": "^0.0.307",
+    "@types/firefox-webext-browser": "^120.0.4",
+    "lucide-preact": "^0.507.0",
+    "pdfjs-dist": "^4.10.38",
+    "preact": "^10.25.4",
+    "react-hot-toast": "^2.5.2",
+    "sonner": "^2.0.1"
+  }
+}
