@@ -21,7 +21,7 @@ UMK+ can only be installed manually and is not available on the Chrome Web Store
 Clone this repository
 
 ```
-git clone
+git clone https://github.com/ReazonGd/umk-plus
 ```
 
 Install packages and build
