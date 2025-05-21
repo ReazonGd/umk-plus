@@ -3,15 +3,16 @@ import { useEffect, useState } from "preact/hooks";
 import toast from "react-hot-toast";
 
 export default function StatInfo() {
-  const [name, setName] = useState("");
-  const [nim, setNIM] = useState("");
+  const [name, setName] = useState("asds");
+  const [nim, setNIM] = useState("asd");
 
   useEffect(() => {
     const nama_nim_element = document.querySelector(".page-header-headings > h1").textContent;
     const [nim, ...nama] = nama_nim_element.split(" ");
+    console.log(nim, nama);
 
-    setName(nama.join(" "));
-    setNIM(nim);
+    setName(() => nama.join(" "));
+    setNIM(() => nim);
 
     document.querySelector("#page-header .card").classList.add("d-none");
   }, []);

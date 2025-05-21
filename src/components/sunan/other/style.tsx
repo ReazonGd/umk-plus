@@ -131,6 +131,7 @@ export default function Style() {
         #umk-plus .row{
             display: flex;
             gap: 10px;
+            flex-wrap: inherit;
             margin: 0;
         }
 
@@ -257,6 +258,7 @@ export default function Style() {
 
             #umk-plus .task-n-schedule{
                 height: 100%;
+                max-height: none;
             }
         }
 

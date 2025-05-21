@@ -1,5 +1,4 @@
-import { useState } from "preact/hooks";
-import { useEffect } from "preact/hooks";
+import { useState, useEffect } from "preact/hooks";
 import { getCalender } from "../../utils/get_calendar_event";
 import Stat from "./big/stat";
 import ScheduleList from "./medium/schedule-list";

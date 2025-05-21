@@ -1,9 +1,7 @@
 import { render } from "preact";
 import CourseView from "../components/sunan/course_view";
-import injectScript from "../utils/inject_find_sse_key";
 
 function course_view_script() {
-  injectScript();
   const container_target = document.querySelector("#page-header");
 
   if (!container_target) return;
