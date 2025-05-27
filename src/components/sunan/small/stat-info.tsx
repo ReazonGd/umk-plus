@@ -26,7 +26,7 @@ export default function StatInfo() {
 
   const copyNIMHandler = () => {
     navigator.clipboard.writeText(nim);
-    toast(() => <span className="toast-text">NIM berhasil disalin</span>);
+    toast.success("NIM has Copied")
   };
 
   const scanBarcodeHandler = () => {};
