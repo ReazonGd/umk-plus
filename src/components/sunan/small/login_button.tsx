@@ -20,7 +20,6 @@ export default function LoginButton() {
 
   const btnHandler = () => {
     if (loading) return;
-    console.log("handeled");
 
     chek_input()
       .then(() => {

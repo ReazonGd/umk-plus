@@ -12,18 +12,12 @@ interface PDFLinkEnhancerProps {
 
 // Check if the device supports PDF viewing
 const isPDFSupported = (): boolean => {
-  // Check for built-in PDF support
   const nav = navigator as any;
 
-  // Most modern browsers support PDF viewing
-  // This is a basic check that can be expanded
   return (
-    // Check if the browser has PDF plugin
     (nav.mimeTypes && nav.mimeTypes["application/pdf"]) ||
-    // Check for mobile devices that typically have built-in PDF support
-    // /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) ||
-    // Most modern desktop browsers support PDF
-    /Chrome|Firefox|Safari|Edge/i.test(navigator.userAgent)
+    // Most of mobile phone dosen't support
+    !/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)
   );
 };
 

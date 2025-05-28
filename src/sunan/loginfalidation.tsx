@@ -6,8 +6,6 @@ import toast, { Toaster } from "react-hot-toast";
 import LoginButton from "../components/sunan/small/login_button";
 
 function bootstrap() {
-  console.log("kiuyituyfgcvh");
-
   const popup_container = document.createElement("div");
   document.body.appendChild(popup_container);
   render(<Toaster position="top-center" reverseOrder={false} />, popup_container);

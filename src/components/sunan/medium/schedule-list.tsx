@@ -13,11 +13,13 @@ export default function ScheduleList({ classList }: { classList: classData[] }) 
 
   const [curent_day_class_list, set_curent_day_class_list] = useState<classData[]>([]);
   const [schedule, setSchedules] = useState<Schedule[]>([]);
-  const [schedule_storage, _] = useLocalExtensionStorage("schedule", "[]");
+  const [schedule_storage] = useLocalExtensionStorage("schedule", "[]");
   const [day_choice, set_day_choice] = useState("");
 
   useEffect(() => {
-    setSchedules(JSON.parse(schedule_storage));
+    const scedules: Schedule[] = JSON.parse(schedule_storage);
+
+    setSchedules(scedules);
   }, [schedule_storage]);
 
   useEffect(() => {

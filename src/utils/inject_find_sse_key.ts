@@ -1,4 +1,7 @@
+import Mlog from "./fancy_log";
+
 export default function injectScript() {
+  Mlog("Setting up sess-token...");
   const payload = function () {
     if ((window as any).M) localStorage.setItem("umk+sess-token", (window as any).M.cfg.sesskey);
 
