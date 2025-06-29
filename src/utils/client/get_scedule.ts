@@ -1,5 +1,5 @@
-import { Dayname, Schedule } from "../type";
-import Mlog from "./fancy_log";
+import { Dayname, Schedule } from "../../type";
+import Mlog from "../fancy_log";
 
 export default function getShedules() {
   return new Promise<Schedule[]>(async (resolve) => {

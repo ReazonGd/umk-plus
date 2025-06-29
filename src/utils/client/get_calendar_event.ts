@@ -1,4 +1,5 @@
-import { CalenderEvent } from "../type";
+import { CalenderEvent, localExtensionStorageName } from "../../type";
+import extensionStorage from "../localExtensionStorage";
 
 export interface exception {
   message: string;
@@ -44,6 +45,7 @@ export async function getCalender(): Promise<CalenderEvent[]> {
     }))
     .sort((a, b) => a.timestart - b.timestart);
 
+  setCalenderEvent2Storage(data);
   return data;
 }
 
@@ -68,4 +70,8 @@ function formatRemainingTime(date: Date): string {
   } else {
     return `${seconds} secon`;
   }
+}
+
+export async function setCalenderEvent2Storage(data: CalenderEvent[]) {
+  return await extensionStorage.set(localExtensionStorageName.saved_calender, JSON.stringify(data));
 }

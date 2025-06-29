@@ -1,15 +1,14 @@
 import { useState, useEffect } from "preact/hooks";
+import extensionStorage from "../localExtensionStorage";
 
-const browser = window.browser || chrome;
-
-export default function useLocalExtensionStorage<T>(key: string, initialUseStateValue: T, initialStorageValue?: T) {
-  const [value, setValue] = useState<T>(initialUseStateValue);
+export default function useLocalExtensionStorage(key: string, initialUseStateValue: string, initialStorageValue?: string) {
+  const [value, setValue] = useState<string>(initialUseStateValue);
 
   useEffect(() => {
     // Get initial value from storage
-    browser.storage.local.get([key], (result) => {
-      if (result[key] !== undefined) {
-        setValue(result[key]);
+    extensionStorage.get(key).then((result: string) => {
+      if (result !== undefined) {
+        setValue(result);
       } else {
         setValue(initialStorageValue ?? initialUseStateValue);
       }
@@ -22,16 +21,16 @@ export default function useLocalExtensionStorage<T>(key: string, initialUseState
       }
     };
 
-    browser.storage.onChanged.addListener(handleChange);
+    extensionStorage.setListener(handleChange);
 
     return () => {
-      browser.storage.onChanged.removeListener(handleChange);
+      extensionStorage.removeListener(handleChange);
     };
   }, [key]);
 
-  const updateValue = async (newValue: T) => {
+  const updateValue = async (newValue: string) => {
     try {
-      await browser.storage.local.set({ [key]: newValue });
+      await extensionStorage.set(key, newValue);
       setValue(newValue);
     } catch (error) {
       console.error("Error updating storage:", error);

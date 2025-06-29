@@ -4,8 +4,15 @@
 import { render } from "preact";
 import toast, { Toaster } from "react-hot-toast";
 import LoginButton from "../components/sunan/small/login_button";
+import extensionStorage from "../utils/localExtensionStorage";
+import { ExtensionConfig, localExtensionStorageName } from "../type";
+import { init_storage } from "../utils/hooks/useConfig";
 
-function bootstrap() {
+async function bootstrap() {
+  const config = await extensionStorage.get(localExtensionStorageName.config);
+  if (!config) init_storage();
+  if (!(JSON.parse(config) as ExtensionConfig).pages_script.login_page) return;
+
   const popup_container = document.createElement("div");
   document.body.appendChild(popup_container);
   render(<Toaster position="top-center" reverseOrder={false} />, popup_container);

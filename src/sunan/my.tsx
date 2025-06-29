@@ -1,7 +1,14 @@
 import { render, h } from "preact";
 import Dashboard from "../components/sunan/dashboard";
+import extensionStorage from "../utils/localExtensionStorage";
+import { ExtensionConfig, localExtensionStorageName } from "../type";
+import { init_storage } from "../utils/hooks/useConfig";
 
-function bootstrap() {
+async function bootstrap() {
+  const config = await extensionStorage.get(localExtensionStorageName.config);
+  if (!config) init_storage();
+  if (!(JSON.parse(config) as ExtensionConfig).pages_script.my_page) return;
+
   const main_container = document.querySelector(`#region-main  div[role="main"]`);
   if (main_container) {
     render(<Dashboard />, main_container);

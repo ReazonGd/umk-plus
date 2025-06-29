@@ -192,6 +192,15 @@ export default function Style() {
             border: 1px solid var(--secondary-color);
             padding: 10px !important;
             background: white;
+            position: relative;
+        }
+        #umk-plus .schedule-card .pgrs {
+            position: absolute;
+            right: 0;
+            font-size: 1.2rem;
+            bottom: 0;
+            color: #0001;
+            font-weight: 900;
         }
         #umk-plus .schedule-card:hover{
             background: var(--primary-color);

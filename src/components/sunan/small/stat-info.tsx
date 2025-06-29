@@ -11,8 +11,9 @@ export default function StatInfo() {
     const nama_nim_element = document.querySelector(".page-header-headings > h1").textContent;
     const [nim, ...nama] = nama_nim_element.split(" ");
 
-    Mlog(`Hello ${nama.join(" ")}!`);
-
+    toast(`Selamat datang!  ${nama.join(" ")}!`, {
+      icon: "👏",
+    });
     setName(() => nama.join(" "));
     setNIM(() => nim);
 

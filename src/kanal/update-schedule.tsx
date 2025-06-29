@@ -1,7 +1,7 @@
 import { Fragment, render } from "preact";
 import { useEffect, useState } from "preact/hooks";
-import useLocalExtensionStorage from "../utils/useLocalExtensionStorage";
-import getShedules from "../utils/get_scedule";
+import useLocalExtensionStorage from "../utils/hooks/useLocalExtensionStorage";
+import getShedules from "../utils/client/get_scedule";
 import toast, { Toaster } from "react-hot-toast";
 import { HardDriveDownload } from "lucide-preact";
 import Mlog, { Merror } from "../utils/fancy_log";

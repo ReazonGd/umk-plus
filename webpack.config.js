@@ -11,6 +11,7 @@ module.exports = {
     sunan_course_view: "./src/sunan/course-view.tsx",
     login_falidation: "./src/sunan/loginfalidation.tsx",
     popup: "./src/popup.tsx",
+    background: "./src/background.ts",
   },
   mode: isDev ? "development" : "production",
   module: {

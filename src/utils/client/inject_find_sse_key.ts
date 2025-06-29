@@ -1,4 +1,4 @@
-import Mlog from "./fancy_log";
+import Mlog from "../fancy_log";
 
 export default function injectScript() {
   Mlog("Setting up sess-token...");

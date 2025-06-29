@@ -8,7 +8,9 @@ export default function ScheduleCard({ classData, schedule }: { classData: class
     <div className="column schedule-card">
       <div className="column class-info gap-0">
         <div className="class-code">{classData.code}</div>
-        <a href={classData.viewurl} className="class-name line-clamp">{classData.fullname}</a>
+        <a href={classData.viewurl} className="class-name line-clamp">
+          {classData.fullname}
+        </a>
       </div>
       {schedule_time && (
         <Fragment>
@@ -25,6 +27,7 @@ export default function ScheduleCard({ classData, schedule }: { classData: class
           ))}
         </Fragment>
       )}
+      {classData.hasprogress ? <p className="pgrs">{classData.progress}%</p> : <></>}
     </div>
   );
 }

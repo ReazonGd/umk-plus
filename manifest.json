@@ -6,11 +6,14 @@
   "icons": {
     "128": "assets/icons/128.png"
   },
-  "permissions": ["activeTab", "scripting", "storage"],
+  "permissions": ["activeTab", "scripting", "storage", "notifications"],
   "action": {
     "default_popup": "popup.html"
   },
   "host_permissions": ["<all_urls>"],
+  "background": {
+    "service_worker": "dist/background.js"
+  },
   "content_scripts": [
     {
       "matches": ["*://sunan.umk.ac.id/", "*://sunan.umk.ac.id/?*"],

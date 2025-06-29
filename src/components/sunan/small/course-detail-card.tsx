@@ -1,7 +1,7 @@
 import { BookMarked, Hash, UserSquare2 } from "lucide-preact";
 import { Schedule } from "../../../type";
 import { useEffect, useState } from "preact/hooks";
-import useLocalExtensionStorage from "../../../utils/useLocalExtensionStorage";
+import useLocalExtensionStorage from "../../../utils/hooks/useLocalExtensionStorage";
 import { Fragment } from "preact/jsx-runtime";
 import convert_class_to_code from "../../../utils/convert_class_to_code";
 
