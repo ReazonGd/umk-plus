@@ -49,7 +49,7 @@ export default function ControlZone() {
       <p>
         <Puzzle size={16} />
         &nbsp;
-        <span>Features</span>
+        <span>FITUR</span>
       </p>
 
       {FEATURES.map(({ key, name, description, icon }) => (
