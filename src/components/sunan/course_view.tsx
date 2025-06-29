@@ -3,9 +3,9 @@ import { CalenderEvent } from "../../type";
 import Style from "./other/style";
 import CourseDetailCard from "./small/course-detail-card";
 import CourseProgress from "./small/course-progress";
-import { getCalender } from "../../utils/get_calendar_event";
+import { getCalender } from "../../utils/client/get_calendar_event";
 import TaskList from "./medium/tasklist";
-import inject_check_per_selection from "../../utils/inject_chek_perselection";
+import inject_check_per_selection from "../../utils/client/inject_chek_perselection";
 import { Toaster } from "react-hot-toast";
 import convert_class_to_code from "../../utils/convert_class_to_code";
 

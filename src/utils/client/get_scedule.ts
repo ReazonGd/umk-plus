@@ -1,4 +1,5 @@
-import { Dayname, Schedule } from "../type";
+import { Dayname, Schedule } from "../../type";
+import Mlog from "../fancy_log";
 
 export default function getShedules() {
   return new Promise<Schedule[]>(async (resolve) => {
@@ -25,13 +26,20 @@ export default function getShedules() {
         res.schedule_text = t;
         const pattern = /(\d{2}:\d{2})-(\d{2}:\d{2}) \((.*?)\)/g;
         const matches = Array.from(t.matchAll(pattern));
-        res.scedule = matches.map((match) => ({
-          start: match[1],
-          startDate: parseTime(match[1]),
-          end: match[2],
-          endDate: parseTime(match[2]),
-          room_code: match[3],
-        }));
+        res.scedule = matches
+          .map((match) => ({
+            start: match[1],
+            startDate: parseTime(match[1]),
+            end: match[2],
+            endDate: parseTime(match[2]),
+            room_code: match[3],
+          }))
+          .sort((a, b) => {
+            const [h1, m1] = a.start.split(":").map(Number);
+            const [h2, m2] = b.start.split(":").map(Number);
+
+            return h1 * 60 + m1 - (h2 * 60 + m2);
+          });
 
         let dayname = ["senin", "selasa", "rabu", "kamis", "jumat", "sabtu", "minggu"];
         res.day_code = dayname[i - 6] as Dayname;
@@ -41,6 +49,12 @@ export default function getShedules() {
 
     const kw = await kw_scedule();
     kw.forEach((v) => scedules.push(v));
+    scedules = scedules.sort((a, b) => {
+      const [h1, m1] = a.scedule[0].start.split(":").map(Number);
+      const [h2, m2] = b.scedule[0].start.split(":").map(Number);
+
+      return h1 * 60 + m1 - (h2 * 60 + m2);
+    });
     resolve(scedules);
   });
 }
@@ -52,6 +66,7 @@ function parseTime(timeStr: string) {
   return date.toISOString();
 }
 async function kw_scedule(): Promise<Schedule[]> {
+  Mlog("Fetching KW schedule...");
   const kw_page = await fetch("https://kanal.umk.ac.id/mahasiswa/jadwalketrampilan");
 
   if (!kw_page.ok) throw new Error("failed to fetch");

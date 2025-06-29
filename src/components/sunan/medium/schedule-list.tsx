@@ -1,10 +1,9 @@
 import { useEffect, useState } from "preact/hooks";
-import { classData, Dayname, days, Schedule } from "../../../type";
+import { classData, Dayname, days, localExtensionStorageName, Schedule } from "../../../type";
 import ScheduleCard from "../small/shcedule-card";
-import useLocalExtensionStorage from "../../../utils/useLocalExtensionStorage";
+import useLocalExtensionStorage from "../../../utils/hooks/useLocalExtensionStorage";
 import { Fragment } from "preact/jsx-runtime";
 import { Import } from "lucide-preact";
-import { getClassList } from "../../../utils/get_classlist";
 import { sortScheduleAndClasses } from "../../../utils/grouping_course";
 
 export default function ScheduleList({ classList }: { classList: classData[] }) {
@@ -13,11 +12,13 @@ export default function ScheduleList({ classList }: { classList: classData[] }) 
 
   const [curent_day_class_list, set_curent_day_class_list] = useState<classData[]>([]);
   const [schedule, setSchedules] = useState<Schedule[]>([]);
-  const [schedule_storage, _] = useLocalExtensionStorage("schedule", "[]");
+  const [schedule_storage] = useLocalExtensionStorage(localExtensionStorageName.schedule, "[]");
   const [day_choice, set_day_choice] = useState("");
 
   useEffect(() => {
-    setSchedules(JSON.parse(schedule_storage));
+    const scedules: Schedule[] = JSON.parse(schedule_storage);
+
+    setSchedules(scedules);
   }, [schedule_storage]);
 
   useEffect(() => {

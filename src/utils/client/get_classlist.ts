@@ -1,5 +1,5 @@
-import { classData } from "../type";
-import convert_class_to_code from "./convert_class_to_code";
+import { classData } from "../../type";
+import convert_class_to_code from "../convert_class_to_code";
 
 export interface exception {
   message: string;

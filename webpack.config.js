@@ -9,6 +9,9 @@ module.exports = {
     sunan_global: "./src/sunan/global.tsx",
     kanal_update_schedule: "./src/kanal/update-schedule.tsx",
     sunan_course_view: "./src/sunan/course-view.tsx",
+    login_falidation: "./src/sunan/loginfalidation.tsx",
+    popup: "./src/popup.tsx",
+    background: "./src/background.ts",
   },
   mode: isDev ? "development" : "production",
   module: {
@@ -25,6 +28,8 @@ module.exports = {
     alias: {
       react: "preact/compat",
       "react-dom": "preact/compat",
+      "react/jsx-runtime": "preact/jsx-runtime",
+      "react/jsx-dev-runtime": "preact/jsx-runtime",
     },
   },
   output: {

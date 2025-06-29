@@ -1,4 +1,5 @@
-import { CalenderEvent } from "../type";
+import { CalenderEvent, localExtensionStorageName } from "../../type";
+import extensionStorage from "../localExtensionStorage";
 
 export interface exception {
   message: string;
@@ -38,11 +39,13 @@ export async function getCalender(): Promise<CalenderEvent[]> {
   const data = body.data.events
     .map((v: CalenderEvent) => ({
       ...v,
-      view_url: v.description ? new DOMParser().parseFromString(v.description, "text/html").querySelector("a")?.href ?? "" : "",
+      // view_url: v.description ? new DOMParser().parseFromString(v.description, "text/html").querySelector("a")?.href ?? "" : "",
+      view_url: `https://sunan.umk.ac.id/mod/${v.modulename}/view.php?id=${v.instance}`,
       remaining_time: formatRemainingTime(new Date(v.timestart * 1000)),
     }))
     .sort((a, b) => a.timestart - b.timestart);
 
+  setCalenderEvent2Storage(data);
   return data;
 }
 
@@ -67,4 +70,8 @@ function formatRemainingTime(date: Date): string {
   } else {
     return `${seconds} secon`;
   }
+}
+
+export async function setCalenderEvent2Storage(data: CalenderEvent[]) {
+  return await extensionStorage.set(localExtensionStorageName.saved_calender, JSON.stringify(data));
 }

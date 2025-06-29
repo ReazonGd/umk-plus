@@ -1,12 +1,11 @@
-import { useState } from "preact/hooks";
-import { useEffect } from "preact/hooks";
-import { getCalender } from "../../utils/get_calendar_event";
+import { useState, useEffect } from "preact/hooks";
+import { getCalender } from "../../utils/client/get_calendar_event";
 import Stat from "./big/stat";
 import ScheduleList from "./medium/schedule-list";
 import TaskList from "./medium/tasklist";
 import Style from "./other/style";
 import { classData } from "../../type";
-import { getClassList } from "../../utils/get_classlist";
+import { getClassList } from "../../utils/client/get_classlist";
 import { Toaster } from "react-hot-toast";
 
 export default function Dashboard() {

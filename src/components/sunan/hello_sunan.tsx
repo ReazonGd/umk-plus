@@ -2,13 +2,7 @@ import { useEffect, useState } from "preact/hooks";
 import { Fragment } from "preact/jsx-runtime";
 
 export function HelloSunan() {
-  const [isLoged, setIsLoged] = useState(false);
-  useEffect(() => {
-    const have_profile_element = document.querySelector(".text-username.menu-action");
-    if (have_profile_element) {
-      setIsLoged(true);
-    }
-  }, []);
+  const [isLoged, setIsLoged] = useState(() => !!document.querySelector(".text-username.menu-action"));
   return (
     <div className="card">
       <div className="card-body">
