@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "UMK+",
-  "version": "0.1.0525",
+  "version": "0.0.2",
   "description": "enchanting for umk website.",
   "icons": {
     "128": "assets/icons/128.png"
@@ -17,27 +17,27 @@
   "content_scripts": [
     {
       "matches": ["*://sunan.umk.ac.id/", "*://sunan.umk.ac.id/?*"],
-      "js": ["dist/sunan_index.js"]
+      "js": ["dist/sunan/index.js"]
     },
     {
       "matches": ["*://sunan.umk.ac.id/login/index.php", "*://sunan.umk.ac.id/login/index.php?*"],
-      "js": ["dist/login_falidation.js"]
+      "js": ["dist/sunan/loginfalidation.js"]
     },
     {
       "matches": ["*://sunan.umk.ac.id/my", "*://sunan.umk.ac.id/my?*", "*://sunan.umk.ac.id/my/", "*://sunan.umk.ac.id/my/?*"],
-      "js": ["dist/sunan_my.js"]
+      "js": ["dist/sunan/my.js"]
     },
     {
       "matches": ["*://kanal.umk.ac.id/mahasiswa/jadwalkuliah", "*://kanal.umk.ac.id/mahasiswa/jadwalkuliah?*", "*://kanal.umk.ac.id/mahasiswa/jadwalkuliah/", "*://kanal.umk.ac.id/mahasiswa/jadwalkuliah/?*"],
-      "js": ["dist/kanal_update_schedule.js"]
+      "js": ["dist/kanal/update-schedule.js"]
     },
     {
       "matches": ["*://sunan.umk.ac.id/*"],
-      "js": ["dist/sunan_global.js"]
+      "js": ["dist/sunan/global.js"]
     },
     {
       "matches": ["*://sunan.umk.ac.id/course/view.php?*"],
-      "js": ["dist/sunan_course_view.js"]
+      "js": ["dist/sunan/course-view.js"]
     }
   ]
 }

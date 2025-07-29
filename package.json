@@ -1,11 +1,10 @@
 {
   "name": "umk-plus",
-  "version": "0.1.0525",
+  "version": "0.0.2",
   "private": false,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack",
-    "dev": "webpack --watch"
+    "build": "node esbuild.config.js",
+    "dev": "node esbuild.config.js --watch"
   },
   "keywords": [],
   "author": "ReazonGd",
@@ -13,10 +12,10 @@
   "description": "",
   "devDependencies": {
     "@babel/preset-react": "^7.26.3",
+    "esbuild": "^0.25.8",
+    "esbuild-plugin-alias": "^0.2.1",
     "ts-loader": "^9.5.2",
-    "typescript": "^5.7.3",
-    "webpack": "^5.97.1",
-    "webpack-cli": "^6.0.1"
+    "typescript": "^5.7.3"
   },
   "dependencies": {
     "@types/chrome": "^0.0.307",
