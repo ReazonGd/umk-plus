@@ -290,6 +290,40 @@ export default function Style() {
         .pdf-view-button.active {
             filter: grayscale(0);
         }
+        #umk-plus .checkbox-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        #umk-plus .checkbox-container input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+
+        #umk-plus .checkbox-container {
+            position: relative;
+            cursor: pointer;
+            user-select: none;
+            color: #707070;
+            background-color: #191919;
+            padding: 10px;
+            border-radius: 5px;
+            border: 2.4px solid #3e3e3e;
+            display: flex;
+            gap: 10px;
+            transition: all 300ms;
+        }
+
+        #umk-plus .checkbox-container:has(input:checked) {
+            border-color: #14a4f2;
+            color: #14a4f2;
+        }
+
+       
       `}
     </style>
   );

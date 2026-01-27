@@ -1,6 +1,6 @@
 # UMK+
 
-UMK+ adalah Chrome browser Extension berfokus untuk mahasiswa UMK (Universitas Muria Kudus). dimana, harapanya mempermudah kegiatan yang dilakukan di aplikasi umk seperti sunan. Dibuat menggunakan TypeScript, Webpack, and Preact.
+UMK+ adalah Chrome browser Extension berfokus untuk mahasiswa UMK (Universitas Muria Kudus). dimana, harapanya mempermudah kegiatan yang dilakukan di aplikasi umk seperti sunan. Dibuat menggunakan TypeScript, esbuild, and Preact.
 
 ### Bahasa
 
@@ -8,8 +8,6 @@ UMK+ adalah Chrome browser Extension berfokus untuk mahasiswa UMK (Universitas M
 - Indonesian
 
 # Instalasi
-
-Saat ini UMK+ hanya di coba menggunakan chrome browser saja.
 
 ## Instalasi dengan crx file
 
@@ -21,9 +19,8 @@ Saat ini UMK+ hanya di coba menggunakan chrome browser saja.
 
 ## Instalasi dengan zip
 
--Pergi ke halaman rilis. [disini](https://github.com/ReazonGd/umk-plus/releases).
-
-- Download file umk-plus-x.x.x.crx
+- Pergi ke halaman rilis. [disini](https://github.com/ReazonGd/umk-plus/releases).
+- Download file umk-plus-x.x.x.zip
 - Extrak file zip
 - Pergi ke Kelola Extensi [chrome://extensions/](chrome://extensions/)
 - Aktifkan developer mode di kanan atas.
@@ -36,6 +33,11 @@ Clone repository ini
 
 ```sh
 git clone https://github.com/ReazonGd/umk-plus
+```
+atau clone dari branch development  
+
+```sh
+git clone --single-branch --branch development https://github.com/ReazonGd/umk-plus 
 ```
 
 Install packages lalu build

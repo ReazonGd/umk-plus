@@ -19,6 +19,9 @@ export function HelloSunan() {
               <li>
                 <a href="https://kanal.umk.ac.id/mahasiswa/jadwalkuliah">Update Schedule</a>
               </li>
+              <li>
+                <a href={"https://portalkawe.umk.ac.id/mahasiswa/jadwal_ketrampilan"}>Update Jadwal Kawe</a>
+              </li>
             </Fragment>
           ) : (
             <li>

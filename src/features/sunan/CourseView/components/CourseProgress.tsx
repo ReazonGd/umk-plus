@@ -27,9 +27,9 @@ export default function CourseProgress() {
   const chekup_all = async () => {
     for (const task of courseTask) {
       if (task.completionstate == "0") continue;
-      const btn = task.formElement.querySelector("button");
+      const btn = task.formElement.querySelector<HTMLButtonElement>("button");
 
-      btn.click();
+      btn?.click();
     }
     updateTask();
   };

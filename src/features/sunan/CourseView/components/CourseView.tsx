@@ -1,20 +1,20 @@
 import { useEffect, useState } from "preact/hooks";
-import { CalenderEvent } from "@/types";
+import { EventApiResponse } from "@/types";
 import CourseDetailCard from "./CourseDetailCard";
 import CourseProgress from "./CourseProgress";
-import { getCalender } from "@/utils/get_calendar_event";
 import TaskList from "@/shared/TaskList";
-import inject_check_per_selection from "@/utils/inject_chek_perselection";
+import inject_check_per_selection from "@/core/inject_chek_perselection";
 import { Toaster } from "react-hot-toast";
 import Style from "@/shared/style";
 import convert_class_to_code from "@/lib/convert_class_to_code";
+import { getEvent } from "@/core/get_event";
 
 export default function CourseView() {
-  const [calenderEvent, setCalenderEvent] = useState<CalenderEvent[]>([]);
+  const [calenderEvent, setCalenderEvent] = useState<EventApiResponse.Event[]>([]);
 
   useEffect(() => {
     inject_check_per_selection();
-    getCalender().then((e) => {
+    getEvent().then((e) => {
       const course_title = document.querySelector("#page-header > div:nth-child(1) > div > div > div.d-flex.align-items-center > div.mr-auto > div > div > h1")?.textContent ?? "";
       const course_code = convert_class_to_code(course_title);
       setCalenderEvent(e.filter((e) => convert_class_to_code(e.course.fullname) == course_code));

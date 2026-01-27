@@ -52,7 +52,7 @@ export default function inject_check_per_selection() {
           if (isDone) return;
           form.querySelector("button")?.click();
         });
-        toast.success(`Checked ${title.querySelector("a")?.textContent} section`);
+        toast.success(`Checked ${title?.querySelector("a")?.textContent} section`);
         check_for_all_done();
       };
 

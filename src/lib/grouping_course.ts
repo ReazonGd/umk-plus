@@ -1,6 +1,6 @@
-import { days, GroupedScheduleItem, classData, Schedule, Dayname } from "../types";
+import { days, GroupedScheduleItem, ClassData, Schedule, Dayname } from "../types";
 
-export function sortScheduleAndClasses(day: Dayname, schedule: Schedule[], classList: classData[]): GroupedScheduleItem[] {
+export function sortScheduleAndClasses(day: Dayname, schedule: Schedule[], classList: ClassData[]): GroupedScheduleItem[] {
   const currentDayIndex = days.indexOf(day);
   const reorderedDays = [...days.slice(currentDayIndex), ...days.slice(0, currentDayIndex)];
   const classMap = new Map(classList.map((cls) => [cls.code, cls]));
@@ -8,7 +8,7 @@ export function sortScheduleAndClasses(day: Dayname, schedule: Schedule[], class
   const groupedClasses: GroupedScheduleItem[] = reorderedDays.map((day) => {
     const daySchedule = schedule.filter((item) => item.day_code === day);
 
-    const dayClasses = daySchedule.map((schedItem) => classMap.get(schedItem.code + schedItem.class)).filter((cls): cls is classData => cls !== undefined);
+    const dayClasses = daySchedule.map((schedItem) => classMap.get(schedItem.code + schedItem.class)).filter((cls): cls is ClassData => cls !== undefined);
     return {
       day_name: day,
       classData: dayClasses,

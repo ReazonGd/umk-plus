@@ -1,5 +1,5 @@
 import { Book, FileText, House, LogIn, Puzzle } from "lucide-preact";
-import CheckBoxControl from "../small/chekbox-control";
+import CheckBoxControl from "../../../../shared/chekbox-control";
 import { useConfigContext } from "../../contex/config";
 
 const FEATURES = [
@@ -45,7 +45,7 @@ export default function ControlZone() {
   };
 
   return (
-    <div className="container-check">
+    <div className="checkbox-list">
       <p>
         <Puzzle size={16} />
         &nbsp;

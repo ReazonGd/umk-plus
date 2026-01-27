@@ -32,12 +32,24 @@
       "js": ["dist/kanal/update-schedule.js"]
     },
     {
+      "matches": ["*://portalkawe.umk.ac.id/mahasiswa/jadwal_ketrampilan", "*://portalkawe.umk.ac.id/mahasiswa/jadwal_ketrampilan?*"],
+      "js": ["dist/portalkawe/update-schedule.js"]
+    },
+    {
       "matches": ["*://sunan.umk.ac.id/*"],
       "js": ["dist/sunan/global.js"]
     },
     {
+      "matches": ["*://sunan.umk.ac.id/*"],
+      "js": ["dist/sunan/popup.js"]
+    },
+    {
       "matches": ["*://sunan.umk.ac.id/course/view.php?*"],
       "js": ["dist/sunan/course-view.js"]
+    },
+    {
+      "matches": ["*://krs.umk.ac.id/makulditawarkan", "*://krs.umk.ac.id/makulditawarkan?*"],
+      "js": ["dist/krs/ScheduleMaker.js"]
     }
   ]
 }

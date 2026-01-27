@@ -5,7 +5,9 @@ import toast from "react-hot-toast";
 
 function chek_input() {
   return new Promise((resolve, reject) => {
-    const formData = new FormData(document.querySelector("#login"));
+    const form = document.querySelector<HTMLFormElement>("#login")
+    if (!form) return reject("Form login tidak ditemukan.")
+    const formData = new FormData(form);
 
     if (!formData.get("username")) return reject("Input username kosong!");
     if (!formData.get("password")) return reject("Input password kosong!");

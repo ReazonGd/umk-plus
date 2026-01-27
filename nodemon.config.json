@@ -1,0 +1,8 @@
+{
+    "ignore": [
+        "node_module",
+        "dist",
+        "release"
+    ],
+    "ext": "ts,tsx,json,html,js"
+}

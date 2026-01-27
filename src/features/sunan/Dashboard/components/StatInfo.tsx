@@ -1,23 +1,23 @@
 import { Copy, LogOut, ScanBarcode } from "lucide-preact";
 import { useEffect, useState } from "preact/hooks";
 import toast from "react-hot-toast";
-import Mlog from "@/lib/fancy_log";
 
 export default function StatInfo() {
   const [name, setName] = useState("asds");
   const [nim, setNIM] = useState("asd");
 
   useEffect(() => {
-    const nama_nim_element = document.querySelector(".page-header-headings > h1").textContent;
+    const nama_nim_element = document.querySelector(".page-header-headings > h1")?.textContent ?? "";
     const [nim, ...nama] = nama_nim_element.split(" ");
 
-    toast(`Selamat datang!  ${nama.join(" ")}!`, {
-      icon: "👏",
-    });
+
+    // toast(`Selamat datang!  ${nama.join(" ")}!`, {
+    //   icon: "👏",
+    // });
     setName(() => nama.join(" "));
     setNIM(() => nim);
 
-    document.querySelector("#page-header .card").classList.add("d-none");
+    document.querySelector("#page-header .card")?.classList.add("d-none");
   }, []);
 
   const logoutHandler = () => {

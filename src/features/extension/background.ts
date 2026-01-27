@@ -1,5 +1,4 @@
 import { CalenderEvent, localExtensionStorageName } from "@/types";
-import Mlog from "@/lib/fancy_log";
 import extensionStorage from "@/lib/localExtensionStorage";
 
 /**

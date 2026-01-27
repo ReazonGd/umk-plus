@@ -43,12 +43,7 @@ function copyFilesRecursively(source, destination, ignorePatterns, baseSource) {
       if (options.verbose) log(`Created directory: ${destination}`);
     }
     fs.readdirSync(source).forEach((file) => {
-      copyFilesRecursively(
-        path.join(source, file),
-        path.join(destination, file),
-        ignorePatterns,
-        baseSource
-      );
+      copyFilesRecursively(path.join(source, file), path.join(destination, file), ignorePatterns, baseSource);
     });
   } else if (stats.isFile()) {
     fs.copyFileSync(source, destination);
@@ -62,27 +57,29 @@ function cleanFolder(folder) {
   }
 }
 
-function main() {
-  const packageFile = fs.readFileSync(options.packagePath);
-  const packageJson = JSON.parse(packageFile);
-  const releaseDir = `./release/${packageJson.name}-${packageJson.version}`;
-  log(`Release directory: ${releaseDir}`);
+function main(timestart) {
+  return () => {
+    const packageFile = fs.readFileSync(options.packagePath);
+    const packageJson = JSON.parse(packageFile);
+    const releaseDir = `./release/${packageJson.name}-${packageJson.version}`;
+    log(`Release directory: ${releaseDir}`);
 
-  cleanFolder(releaseDir);
+    cleanFolder(releaseDir);
 
-  let ignorePatterns = [];
-  if (fs.existsSync(options.ignoreFilePath)) {
-    const ignoreContent = fs.readFileSync(options.ignoreFilePath, "utf8");
-    ignorePatterns = ignoreContent
-      .split("\n")
-      .map((line) => line.trim())
-      .filter((line) => line && !line.startsWith("#"));
-    if (options.verbose) log(`Loaded ${ignorePatterns.length} ignore patterns from ${options.ignoreFilePath}`);
-  }
+    let ignorePatterns = [];
+    if (fs.existsSync(options.ignoreFilePath)) {
+      const ignoreContent = fs.readFileSync(options.ignoreFilePath, "utf8");
+      ignorePatterns = ignoreContent
+        .split("\n")
+        .map((line) => line.trim())
+        .filter((line) => line && !line.startsWith("#"));
+      if (options.verbose) log(`Loaded ${ignorePatterns.length} ignore patterns from ${options.ignoreFilePath}`);
+    }
 
-  copyFilesRecursively(options.sourcePath, releaseDir, ignorePatterns, options.sourcePath);
+    copyFilesRecursively(options.sourcePath, releaseDir, ignorePatterns, options.sourcePath);
 
-  log(`Release folder created and files copied successfully`);
+    log(`Release folder created and files copied successfully\nFinished in ${(new Date() - timestart)} ms`);
+  };
 }
 
 module.exports = main;

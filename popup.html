@@ -47,13 +47,13 @@
         border: 0;
       }
 
-      .container-check {
+      .checkbox-list {
         display: flex;
         flex-direction: column;
         gap: 10px;
       }
 
-      .container input {
+      .checkbox-container input {
         position: absolute;
         opacity: 0;
         cursor: pointer;
@@ -61,7 +61,7 @@
         width: 0;
       }
 
-      .container {
+      .checkbox-container {
         position: relative;
         cursor: pointer;
         user-select: none;
@@ -75,13 +75,13 @@
         transition: all 300ms;
       }
 
-      .container:has(input:checked) {
+      .checkbox-container:has(input:checked) {
         border-color: #14a4f2;
-      }
-
-      .container:has(input:checked) {
         color: #14a4f2;
       }
+
+      /* .checkbox-container:has(input:checked) {
+      } */
 
       /* .container {
         display: block;

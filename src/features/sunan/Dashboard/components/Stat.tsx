@@ -1,10 +1,14 @@
 import { Image } from "lucide-preact";
-import { classData, CalenderEvent, localExtensionStorageName } from "@/types";
+import { localExtensionStorageName } from "@/types";
 import useLocalExtensionStorage from "@/hooks/useLocalExtensionStorage";
 import StatInfo from "./StatInfo";
+import { useClassListContext } from "../context/ClassListSunan";
+import { useEventContext } from "../context/EventsSunan";
 
-export default function Stat({ classList, tasks }: { classList: classData[]; tasks: CalenderEvent[] }) {
+export default function Stat() {
   const [image, setImage] = useLocalExtensionStorage(localExtensionStorageName.dashboard_image, "", "https://i.pinimg.com/736x/e1/92/92/e1929208c65da14fb828310c431f5d77.jpg");
+  const [classList] = useClassListContext()
+  const [tasks] = useEventContext()
 
   const handleChageImage = () => {
     const url = prompt("Enter the image URL", image);

@@ -1,8 +1,8 @@
 import { PackageOpen } from "lucide-preact";
-import { CalenderEvent } from "../types";
-import TaskCard from "../features/sunan/CourseView/components/TaskCard";
+import { EventApiResponse } from "../types";
+import TaskCard from "./TaskCard";
 
-export default function TaskList({ tasks }: { tasks: CalenderEvent[] }) {
+export default function TaskList({ tasks }: { tasks: EventApiResponse.Event[] }) {
   return (
     <div className="task-list">
       <b>{tasks.length} Task is due</b>
@@ -10,6 +10,7 @@ export default function TaskList({ tasks }: { tasks: CalenderEvent[] }) {
         <div className="overflow row">
           <div className="row">
             {tasks
+              // .filter((e) => formatRemainingTime(new Date(e.timestart * 1000)) != 'Time has passed')
               .sort(({ timestart: a }, { timestart: b }) => a - b)
               .map((task) => (
                 <TaskCard task={task} />

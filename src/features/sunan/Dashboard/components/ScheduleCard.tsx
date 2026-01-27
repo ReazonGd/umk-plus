@@ -1,7 +1,7 @@
 import { Fragment } from "preact/jsx-runtime";
-import { classData, Schedule } from "@/types";
+import { ClassData, Schedule } from "@/types";
 
-export default function ScheduleCard({ classData, schedule }: { classData: classData; schedule: Schedule[] }) {
+export default function ScheduleCard({ classData, schedule }: { classData: ClassData; schedule: Schedule[] }) {
   const schedule_time = schedule.find((e) => e.code + e.class === classData.code);
 
   return (

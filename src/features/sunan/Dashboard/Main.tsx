@@ -1,10 +1,12 @@
 import { render, h } from "preact";
 import Dashboard from "./components/Dashboard";
 import checkFeature from "@/lib/feature-cheker";
+import { log } from "@/lib/debug-log";
 
 async function bootstrap() {
-  const isEnable = await checkFeature((p)=> p.pages_script.my_page);
-  if (!isEnable) return
+  const isEnable = await checkFeature((p) => p.pages_script.my_page);
+  if (!isEnable) return;
+  log("Custom dashboard is enabled.");
 
   const main_container = document.querySelector(`#region-main  div[role="main"]`);
   if (main_container) {

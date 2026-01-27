@@ -1,4 +1,4 @@
-import { classData } from "../types";
+import { ClassData } from "../types";
 import convert_class_to_code from "../lib/convert_class_to_code";
 
 export interface exception {
@@ -30,7 +30,7 @@ export async function getClassList() {
     ]),
   });
 
-  const [body]: { error: boolean; exception?: exception; data: { courses: classData[] } }[] = await responses.json();
+  const [body]: { error: boolean; exception?: exception; data: { courses: ClassData[] } }[] = await responses.json();
 
   if (body.error) {
     throw new Error("misrequest");
@@ -39,7 +39,7 @@ export async function getClassList() {
   let data = body.data.courses;
 
   data = data.map((v) => {
-    v.code = convert_class_to_code(v.fullname);
+    v.code = convert_class_to_code(v.fullname) ?? "";
 
     return v;
   });

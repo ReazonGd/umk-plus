@@ -3,15 +3,19 @@ import extensionStorage from "../lib/localExtensionStorage";
 
 export default function useLocalExtensionStorage(key: string, initialUseStateValue: string, initialStorageValue?: string) {
   const [value, setValue] = useState<string>(initialUseStateValue);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     // Get initial value from storage
-    extensionStorage.get(key).then((result: string) => {
+    extensionStorage.get(key).then((result?: string) => {
       if (result !== undefined) {
         setValue(result);
       } else {
         setValue(initialStorageValue ?? initialUseStateValue);
       }
+
+      // set loanding to false;
+      setLoading(false);
     });
 
     // Listen for changes
@@ -37,5 +41,5 @@ export default function useLocalExtensionStorage(key: string, initialUseStateVal
     }
   };
 
-  return [value, updateValue] as const;
+  return [value, updateValue, loading] as const;
 }
