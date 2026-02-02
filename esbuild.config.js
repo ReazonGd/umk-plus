@@ -17,7 +17,8 @@ esbuild
       "sunan/loginfalidation": "src/features/sunan/Login/Main.tsx",
       popup: "src/features/extension/popup.tsx",
       background: "src/features/extension/background.ts",
-      "krs/ScheduleMaker": "src/features/krs/ScheduleMaker/Main.tsx"
+      "krs/ScheduleMaker": "src/features/krs/ScheduleMaker/Main.tsx",
+      "krs/AutoApply": "src/features/krs/AutoApply/Main.tsx"
     },
     outdir: "dist",
     entryNames: "[dir]/[name]",

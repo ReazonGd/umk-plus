@@ -22,6 +22,7 @@ export default function DisplayScedule() {
       }
 
       const new_scedule = [...prev, matkul];
+      // return new_scedule; // disable cheking
       let allow = true;
 
       const byDay: Record<string, { start: number; end: number }[]> = {};
@@ -128,7 +129,7 @@ export default function DisplayScedule() {
                       <td>
                         {daySchedules.map((ds, idx) => (
                           <>
-                            {ds.time} {ds.room}
+                            {ds.time} {ds.room} <br />
                           </>
                         ))}
                       </td>

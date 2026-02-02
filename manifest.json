@@ -50,6 +50,10 @@
     {
       "matches": ["*://krs.umk.ac.id/makulditawarkan", "*://krs.umk.ac.id/makulditawarkan?*"],
       "js": ["dist/krs/ScheduleMaker.js"]
+    },
+    {
+      "matches": ["*://krs.umk.ac.id/entrikrs", "*://krs.umk.ac.id/entrikrs?*","*://krs.umk.ac.id/entrikrs#*"],
+      "js": ["dist/krs/AutoApply.js"]
     }
   ]
 }

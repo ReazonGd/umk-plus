@@ -14,12 +14,13 @@ export default function Accordion({
   return (
     <div
       className="bg-white"
-      style={{ height: isOpen ? "auto" : "52px", transition: "all 0.3s ease", overflow: "hidden" }}
+      style={{ height: isOpen ? "auto" : "57px", transition: "all 0.3s ease", overflow: "hidden" }}
     >
       <div
-        className="text-white fw-bold"
+        className="fw-bold"
         style={{
-          background: "#3805e8",
+          border: "#dbe0e5 solid 1px",
+          borderRadius: "4px",
           padding: "16px 20px",
           marginBottom: "10px",
           width: "100%",
@@ -27,6 +28,7 @@ export default function Accordion({
           justifyContent: "space-between",
           alignItems: "center",
           cursor: "pointer",
+          color: "#000",
         }}
         onClick={() =>
           setIsOpen((prev) => {
