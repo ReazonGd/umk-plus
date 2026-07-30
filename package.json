@@ -1,6 +1,6 @@
 {
   "name": "umk-plus",
-  "version": "0.0.2",
+  "version": "0.2.1",
   "private": false,
   "scripts": {
     "build": "node esbuild.config.js",

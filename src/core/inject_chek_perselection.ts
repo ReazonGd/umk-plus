@@ -40,10 +40,10 @@ export default function inject_check_per_selection() {
         });
       });
 
-      const title = el.querySelector("div.content > h3.sectionname");
+      const container = el.querySelector("div.content");
       const checkAllButton = document.createElement("button");
-      checkAllButton.innerHTML = "✅";
-      checkAllButton.className = "pdf-view-button";
+      checkAllButton.innerHTML = "centang semua ✅";
+      checkAllButton.className = "pdf-view-button m-l-3";
       checkAllButton.onclick = (e) => {
         e.preventDefault();
         e.stopPropagation();
@@ -52,14 +52,14 @@ export default function inject_check_per_selection() {
           if (isDone) return;
           form.querySelector("button")?.click();
         });
-        toast.success(`Checked ${title?.querySelector("a")?.textContent} section`);
+        toast.success(`Checked ${container?.querySelector("a")?.textContent} section`);
         check_for_all_done();
       };
 
       check_for_all_done();
 
-      if (title) {
-        title.appendChild(checkAllButton);
+      if (container) {
+        container.insertBefore(checkAllButton,container.querySelector(".summary")!);
       }
     });
 }

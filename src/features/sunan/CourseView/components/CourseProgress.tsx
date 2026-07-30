@@ -37,7 +37,7 @@ export default function CourseProgress() {
   useEffect(() => {
     const t = updateTask();
     t.forEach((e) => {
-      const element = e.formElement.querySelector('[name="completionstate"]');
+      const element = e.formElement.querySelector('[name="completionstate"]')!;
       const observer = new MutationObserver((mutations) => {
         updateTask();
       });

@@ -64,7 +64,7 @@ export default function DisplayScedule() {
   };
 
   return (
-    <Accordion title="Schedule Maker UMK ">
+    <Accordion title="Schedule Maker UMK " normalyOpen>
       <table class="table table-bordered" width="100%" style="font-size: 11px; color: black">
         <tbody style="vertical-align: top; text-align: center; padding: .3rem .5rem;">
           <tr class="bg bg-primary text-white" style="padding: .3rem .5rem;">
@@ -153,8 +153,7 @@ export default function DisplayScedule() {
             <tr>
               <td colSpan={5}>Total SKS</td>
               <td>{schedules.map((e) => Number(e.SKS)).reduce((a, b) => a + b, 0)}</td>
-              <td colSpan={7}></td>
-              <td>
+              <td colSpan={8}>
                 <button
                   className="btn btn-sm btn-danger"
                   onClick={() => {
@@ -169,86 +168,94 @@ export default function DisplayScedule() {
         </tbody>
       </table>
 
-      {Krsoption.map((semester) => (
-        <Accordion title={semester.semester}>
-          {semester.options.map((matkul) => {
-            const [_, setIsFirstLoad] = useState(true);
-            const [copy, setCopy] = useState(matkul.detail);
+      <Accordion title="Generate" normalyOpen>
+        <p>pilih semester</p>
+        <div style={{ flexWrap: "wrap", display: "flex", gap: "4px", alignItems: "center" }}></div>
+        <p>pilih matkul</p>
+        <div style={{ flexWrap: "wrap", display: "flex", gap: "4px", alignItems: "center" }}></div>
+      </Accordion>
+      <Accordion title="Manual">
+        {Krsoption.map((semester) => (
+          <Accordion title={semester.semester}>
+            {semester.options.map((matkul) => {
+              const [_, setIsFirstLoad] = useState(true);
+              const [copy, setCopy] = useState(matkul.detail);
 
-            const hondlefistopen = async (isOpen: boolean) => {
-              if (!isOpen) return;
-              setIsFirstLoad((prev) => {
-                if (!prev) return false;
-                copy.forEach(async (detail) => {
-                  fetchMatkulDetail(detail.id).then((schedule) => {
-                    if (schedule) {
-                      setCopy((prev2) => {
-                        const newcopy = prev2.map((d) => {
-                          if (d.id === detail.id) {
-                            return { ...d, schedule };
-                          }
-                          return d;
+              const hondlefistopen = async (isOpen: boolean) => {
+                if (!isOpen) return;
+                setIsFirstLoad((prev) => {
+                  if (!prev) return false;
+                  copy.forEach(async (detail) => {
+                    fetchMatkulDetail(detail.id).then((schedule) => {
+                      if (schedule) {
+                        setCopy((prev2) => {
+                          const newcopy = prev2.map((d) => {
+                            if (d.id === detail.id) {
+                              return { ...d, schedule };
+                            }
+                            return d;
+                          });
+                          return newcopy;
                         });
-                        return newcopy;
-                      });
-                    }
+                      }
+                    });
                   });
+                  return false;
                 });
-                return false;
-              });
-            };
-            return (
-              <Accordion title={`${matkul.kode} - ${matkul.mataKuliah}`} onChangeOpen={hondlefistopen}>
-                <table class="table table-bordered" width="100%" style="font-size: 11px; color: black">
-                  <thead>
-                    <tr>
-                      <th>Kelas</th>
-                      <th>Dosen</th>
-                      <th>SKS</th>
-                      <th>Jadwal</th>
-                      <th>Aksi</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {copy.map((detail) => {
-                      return (
-                        <tr>
-                          <td>{detail.kelas}</td>
-                          <td>{detail.dosen}</td>
-                          <td>{detail.SKS}</td>
-                          <td>{detail.schedule.map((v) => `${v.day} ${v.time}(${v.room})`).join(", ")}</td>
-                          <td>
-                            {!schedules.find((v) => v.kode === detail.kode) ? (
-                              <button
-                                className={`btn btn-sm btn-primary`}
-                                disabled={detail.schedule.length === 0}
-                                onClick={() => {
-                                  addMakul(detail);
-                                }}
-                              >
-                                pilih
-                              </button>
-                            ) : (
-                              <button
-                                className={`btn btn-sm btn-anger`}
-                                onClick={() => {
-                                  removeMakul(detail.kode);
-                                }}
-                              >
-                                batalkan
-                              </button>
-                            )}
-                          </td>
-                        </tr>
-                      );
-                    })}
-                  </tbody>
-                </table>
-              </Accordion>
-            );
-          })}
-        </Accordion>
-      ))}
+              };
+              return (
+                <Accordion title={`${matkul.kode} - ${matkul.mataKuliah}`} onChangeOpen={hondlefistopen}>
+                  <table class="table table-bordered" width="100%" style="font-size: 11px; color: black">
+                    <thead>
+                      <tr>
+                        <th>Kelas</th>
+                        <th>Dosen</th>
+                        <th>SKS</th>
+                        <th>Jadwal</th>
+                        <th>Aksi</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {copy.map((detail) => {
+                        return (
+                          <tr>
+                            <td>{detail.kelas}</td>
+                            <td>{detail.dosen}</td>
+                            <td>{detail.SKS}</td>
+                            <td>{detail.schedule.map((v) => `${v.day} ${v.time}(${v.room})`).join(", ")}</td>
+                            <td>
+                              {!schedules.find((v) => v.kode === detail.kode) ? (
+                                <button
+                                  className={`btn btn-sm btn-primary`}
+                                  disabled={detail.schedule.length === 0}
+                                  onClick={() => {
+                                    addMakul(detail);
+                                  }}
+                                >
+                                  pilih
+                                </button>
+                              ) : (
+                                <button
+                                  className={`btn btn-sm btn-anger`}
+                                  onClick={() => {
+                                    removeMakul(detail.kode);
+                                  }}
+                                >
+                                  batalkan
+                                </button>
+                              )}
+                            </td>
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
+                </Accordion>
+              );
+            })}
+          </Accordion>
+        ))}
+      </Accordion>
     </Accordion>
   );
 }

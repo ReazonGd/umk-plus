@@ -13,16 +13,6 @@ export interface PagesExtractor {
 }
 
 export default async function Extractor(res: PrefiewFetcher): Promise<PagesExtractor> {
-  if (res.response.redirected && res.response.url.endsWith(".pdf")) {
-    return {
-      url: res.response.url,
-      title: "PDF Viewer",
-      data: {
-        is_iframeable: true,
-      },
-    };
-  }
-
   try {
     const path = new URL(res.url).pathname;
 
@@ -33,6 +23,8 @@ export default async function Extractor(res: PrefiewFetcher): Promise<PagesExtra
       case "/mod/attendance/view.php":
         return { data: { __html: await extract_attendance(res.text_content) }, url: res.url, title: "Attendance Viewer" };
 
+      case "/mod/resource/view.php":
+        return { data: { __html: extract_resoure_page(res.text_content) }, url: res.url, title: "Assignment Viewer" }
       default:
         throw Error("cant handle url");
     }
@@ -54,6 +46,12 @@ function extract_main(html: string): string {
   const doc = parser.parseFromString(html, "text/html");
 
   return doc.querySelector("[role='main']")?.innerHTML ?? "";
+}
+function extract_resoure_page(html: string): string {
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(html, "text/html");
+
+  return doc.querySelector(".resourcecontent")?.innerHTML ?? "";
 }
 
 async function extract_attendance(html: string): Promise<string> {

@@ -283,6 +283,7 @@ export default function Style() {
             border: none;
             background: transparent;
             cursor: pointer;
+            margin-left: auto;
             filter: grayscale(1);
         }
 
@@ -323,6 +324,18 @@ export default function Style() {
             color: #14a4f2;
         }
 
+        #umk-plus .add-calendar-link {
+            font-size: 10px;
+            background:  #14a4f2;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 10px;
+            padding: 2px 10px !important;
+            display: flex;
+            gap: 4px;
+            width: fit-content !important;
+            align-items: center;
+        }
        
       `}
     </style>

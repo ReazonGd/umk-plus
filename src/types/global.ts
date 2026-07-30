@@ -13,3 +13,12 @@ export interface RequestStatus{
     status: StatusEnum
     message: StatusMesssageEnum | string,
 }
+
+export type GoogleCalendarEventParams = {
+  title: string;
+  description?: string;
+  location?: string;
+  startDate: Date;
+  endDate?: Date;
+  timezone?: string;
+};

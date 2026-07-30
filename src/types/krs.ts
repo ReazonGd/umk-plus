@@ -6,11 +6,13 @@ export interface MatkulDetail {
   kategori: string;
   mataKuliah: string;
   id: string;
-  schedule: {
-    day: string;
-    time: string;
-    room: string;
-  }[];
+  schedule: MatkulDetailSchedule[];
+}
+
+export interface MatkulDetailSchedule {
+  day: string;
+  time: string;
+  room: string;
 }
 
 export interface SemesterOption {

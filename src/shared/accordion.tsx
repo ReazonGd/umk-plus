@@ -5,11 +5,13 @@ export default function Accordion({
   children,
   title,
   onChangeOpen,
+  normalyOpen
 }: {
   title: string;
+  normalyOpen?: boolean;
   onChangeOpen?: (isOpen: boolean) => void;
 } & JSXInternal.HTMLAttributes<HTMLDivElement>) {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(normalyOpen);
 
   return (
     <div
